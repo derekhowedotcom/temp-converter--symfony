@@ -11,21 +11,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 // use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Question\Question;
 
-final class ConvertTempCommand extends Command
+Final class ConvertTempCommand extends Command
 {
     
     protected $temperatureSclae;
     protected $temperatureUnit;
     protected $convertedUnit;
 
-    
      // setup command, description, and parameters
     protected function configure()
     {
         $this->setName('temperature-converter');
         $this->setDescription('Converts temperatures from Fahrenheit to Celsius and from Celsius to Fahrenheit.');
-        // $this->addArgument('temperatureUnit', InputArgument::REQUIRED, 'temperature to be converted.');
-        // $this->addArgument('temperatureSclae', InputArgument::REQUIRED, 'temperature to be converted.');
         $this->addArgument('temperatureSclae', InputArgument::OPTIONAL, 'Provide a temperature Scale');
         $this->addArgument('temperatureUnit', InputArgument::OPTIONAL, 'Provide a temperature Unit');
     }
@@ -52,11 +49,11 @@ final class ConvertTempCommand extends Command
         return $this->convertedUnit;
     }
 
-    protected function clacFahrenheit($value) 
+    public function clacFahrenheit($value) 
     {
         return ((9/5) * $value) + (32);
     }
-    protected function clacCelsius($value) 
+    public function clacCelsius($value) 
     {
         return ($value - 32) * (5/9);
     }
